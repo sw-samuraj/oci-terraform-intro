@@ -50,25 +50,23 @@ func terraformEnvOptions() *terraform.Options {
 func TestTerraform(t *testing.T) {
 	options = terraformEnvOptions()
 
-	defer terraform.Destroy(t, options)
-	// terraform.WorkspaceSelectOrNew(t, options, "terratest-vita")
 	terraform.InitAndApply(t, options)
 
 	runSubtests(t)
+
+	terraform.Destroy(t, options)
 }
 
 func TestWithoutProvisioning(t *testing.T) {
-	options = terraformEnvOptions()
-
 	runSubtests(t)
 }
 
 func runSubtests(t *testing.T) {
-	t.Run("sshBastion", sshBastion)
-	t.Run("sshWeb", sshWeb)
-	t.Run("netstatNginx", netstatNginx)
-	t.Run("curlWebServer", curlWebServer)
-	t.Run("checkVpn", checkVpn)
+	// t.Run("sshBastion", sshBastion)
+	// t.Run("sshWeb", sshWeb)
+	// t.Run("netstatNginx", netstatNginx)
+	// t.Run("curlWebServer", curlWebServer)
+	t.Run("checkVcn", checkVcn)
 }
 
 func sshBastion(t *testing.T) {
@@ -87,11 +85,10 @@ func curlWebServer(t *testing.T) {
 	curlService(t, "nginx", "", "80", "200")
 }
 
-func checkVpn(t *testing.T) {
+func checkVcn(t *testing.T) {
 	// client
 	config := common.CustomProfileConfigProvider("", "CzechEdu")
 	c, _ := core.NewVirtualNetworkClientWithConfigurationProvider(config)
-	// c, _ := core.NewVirtualNetworkClientWithConfigurationProvider(common.DefaultConfigProvider())
 
 	// request
 	request := core.GetVcnRequest{}
