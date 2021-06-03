@@ -1,6 +1,7 @@
 *.tfstate*
 env-vars
 *.terraform.tfvars
+.terraform.lock.hcl
 .terraform/
 
 .idea
@@ -17,3 +18,5 @@ web-server/datasources.tf
 web-server/lb.tf
 web-server/outputs.tf
 web-server/subnet.tf
+
+id_rsa

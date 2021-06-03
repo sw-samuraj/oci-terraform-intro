@@ -1,22 +1,22 @@
-export TF_VAR_region="eu-frankfurt-1"
+export TF_VAR_region=eu-frankfurt-1
 export PS1='\u@\h \w [terraform web-server $TF_VAR_region]\$ '
 ### Authentication details
-# top admin:
-export TF_VAR_tenancy_ocid="ocid1.tenancy.oc1..aaaaaaaagpl3dtrsgsdrpjmtkffgtywh3gcesjyk4psebzssdlngpyg3luda"
-export TF_VAR_user_ocid="ocid1.user.oc1..aaaaaaaaranz2i2o7g5vzdfdmhc73l4shsmiezib3f7d7khdjzwjermylonq"
-export TF_VAR_fingerprint="a3:0c:69:fa:5e:ad:fd:20:b2:d3:ef:f2:e0:63:9f:60"
-export TF_VAR_private_key_path="/home/dobias/.oci/oci_api_key.pem"
+export TF_VAR_tenancy_ocid=ocid1.tenancy.oc1..aaaaaaaah3b24zkkewpfygiw3rekqn3idilrt2qrjzkcdxbu5yhqpet4ox4a
+export TF_VAR_user_ocid=ocid1.user.oc1..aaaaaaaawcnv6rupe65khoaixjfozzazx45v74z7piphbley4ogfdsikntgq
+export TF_VAR_fingerprint=af:08:97:b1:11:d2:b1:96:79:fa:e7:19:d9:1e:c0:2c
+export TF_VAR_private_key_path=/home/jirka/Downloads/jiriklepl-05-18-14-32.pem
 
 #export TF_VAR_availability_domain=1
 export TF_VAR_TestServerShape="VM.Standard2.1"
 
-export TF_VAR_CompartmentOCID="ocid1.compartment.oc1..aaaaaaaar5sra7w3prqo3wvyyedho7vl3mpgmh4jbzstl5mykempn4jqkjuq"
+export TF_VAR_CompartmentOCID=ocid1.compartment.oc1..aaaaaaaazdyl6y7calgvq3nkugyfxqhayq5y2fxmet7rhwzpucpekj3dwx7a
 
 ### Public/private keys used on the instance
-export TF_VAR_ssh_public_key=/home/dobias/.ssh/id_rsa.pub
-export TF_VAR_ssh_private_key=/home/dobias/.ssh/id_rsa
+export TF_VAR_ssh_public_key=./id_rsa.pub
+export TF_VAR_ssh_private_key=./id_rsa
 
-#export TF_VAR_InstanceImageOCID="{us-phoenix-1 = \"ocid1.image.oc1.phx.aaaaaaaasez4lk2lucxcm52nslj5nhkvbvjtfies4yopwoy4b3vysg5iwjra\",
-#                                  eu-frankfurt-1 = \"ocid1.image.oc1.eu-frankfurt-1.aaaaaaaavz6p7tyrczcwd5uvq6x2wqkbwcrjjbuohbjomtzv32k5bq24rsha\", 
-#                                  }"
+export TF_VAR_InstanceImageOCID="{eu-frankfurt-1 = \"ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa4pnql6wprjir2xhf2is2r7u2g7e4s3lufxxjp6hzm3tyepannwra\", 
+                                  }"
 
+alias tf=terraform
+tf init
