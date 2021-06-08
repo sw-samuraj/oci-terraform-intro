@@ -3,10 +3,10 @@ package terratest
 import (
 	"context"
 	"fmt"
+	"github.com/gruntwork-io/terratest/modules/http-helper"
 	"github.com/gruntwork-io/terratest/modules/retry"
 	"github.com/gruntwork-io/terratest/modules/ssh"
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	"github.com/gruntwork-io/terratest/modules/http-helper"
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/core"
 	"io/ioutil"
@@ -76,21 +76,21 @@ func runSubtests(t *testing.T) {
 }
 
 func sshBastion(t *testing.T) {
-	for i:=0; i<getBastionCount(); i++ {
+	for i := 0; i < getBastionCount(); i++ {
 		fmt.Printf("== Checking Bastion #%d\n", i)
 		ssh.CheckSshConnection(t, bastionHost(t, i))
 	}
 }
 
 func sshWeb(t *testing.T) {
-	for i:=0; i<getWebCount(); i++ {
+	for i := 0; i < getWebCount(); i++ {
 		fmt.Printf("== Checking WebServer #%d\n", i)
 		jumpSsh(t, "whoami", sshUserName, false, i)
 	}
 }
 
 func netstatNginx(t *testing.T) {
-	for i:=0; i<getWebCount(); i++ {
+	for i := 0; i < getWebCount(); i++ {
 		netstatService(t, nginxName, nginxPort, 1, i)
 	}
 }
@@ -141,7 +141,7 @@ func checkLoadBalancer(t *testing.T) {
 	description := fmt.Sprintf("Get LB on %s", address)
 
 	reachedIPs := make([]string, 0)
-	for i:=0; i<2*len(webIPs); i++ {
+	for i := 0; i < 2*len(webIPs); i++ {
 		url := retry.DoWithRetry(t, description, maxRetries, sleepBetweenRetries, func() (string, error) {
 			code, body, err := http_helper.HttpGetE(t, address, nil)
 			if err != nil {
@@ -194,7 +194,7 @@ func checkWebServerShape(t *testing.T) {
 			t.Fatalf("error in calling instance: %s", err.Error())
 		}
 
-		expected := "VM.Standard2.1"
+		expected := "VM.Standard.E3.Flex"
 		actual := response.Instance.Shape
 
 		if expected != *actual {
@@ -204,7 +204,7 @@ func checkWebServerShape(t *testing.T) {
 		expected = "eu-frankfurt-1"
 		actual = response.Instance.Region
 
-		if (expected != *actual) {
+		if expected != *actual {
 			t.Fatalf("wrong VM region: expected %q, got %q", expected, *actual)
 		}
 	}
@@ -300,7 +300,7 @@ func getOutputList(t *testing.T, field string) []string {
 
 func getBastionCount() int {
 	count, err := strconv.Atoi(os.Getenv("TF_VAR_BastionVMCount"))
-	if (err != nil) {
+	if err != nil {
 		return 1
 	}
 	return count
@@ -308,7 +308,7 @@ func getBastionCount() int {
 
 func getWebCount() int {
 	count, err := strconv.Atoi(os.Getenv("TF_VAR_WebVMCount"))
-	if (err != nil) {
+	if err != nil {
 		return 1
 	}
 	return count
@@ -332,7 +332,6 @@ func webHost(t *testing.T, index int) ssh.Host {
 	webIP := getOutputList(t, "WebServerPrivateIPs")[index]
 	return sshHost(t, webIP)
 }
-
 
 func sshHost(t *testing.T, ip string) ssh.Host {
 	return ssh.Host{

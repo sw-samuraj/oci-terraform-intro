@@ -26,7 +26,7 @@ variable "region" {
 #}
 
 variable "TestServerShape" {
-  default = "VM.Standard2.1"
+  default = "VM.Standard.E3.Flex"
 }
 
 variable "InstanceImageOCID" {
