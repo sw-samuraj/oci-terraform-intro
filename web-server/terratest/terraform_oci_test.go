@@ -65,9 +65,9 @@ func TestWithoutProvisioning(t *testing.T) {
 
 func runSubtests(t *testing.T) {
 	t.Run("sshBastion", sshBastion)
-	t.Run("sshWeb", sshWeb)
-	t.Run("netstatNginx", netstatNginx)
-	t.Run("curlWebServer", curlWebServer)
+	// t.Run("sshWeb", sshWeb)
+	// t.Run("netstatNginx", netstatNginx)
+	// t.Run("curlWebServer", curlWebServer)
 	t.Run("checkVpn", checkVpn)
 }
 
