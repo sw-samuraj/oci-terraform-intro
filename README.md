@@ -1,15 +1,15 @@
 ---
 title: Introduction to Terraform using OCI
 author: Vít Kotačka, Ladislav Dobiáš
-...
-
+date: 2026-03-04
+---
 
 # OCI & Terraform & Terratest
 
 ## Agenda
 
 - Login to OCI console
-- Prereqisities
+- Prerequisites
 - Setup OCI API key
 - Today's Goals with Terraform
 - Terraform - setup
@@ -21,40 +21,27 @@ author: Vít Kotačka, Ladislav Dobiáš
 ## Login to OCI console
 
 - OCI - Oracle Cloud Infrastructure
-- console URL: [https://console.eu-frankfurt-1.oraclecloud.com/?tenant=czechedu2020](https://console.eu-frankfurt-1.oraclecloud.com/?tenant=czechedu2020)
-    - user: email
-    - password: generated, need to be changed on first login
-
-- authorization:
-    - every student is in one of `student*` groups
-    - every group `student*` can:
-        - do all in their compartment (same name as the group)
-        - read all resources
-        - (these policies would be too open for real production environment)
-
-- quota:
-    - important:
-        - virtual machine shapes: 3x 15 VM.Standard2.1 (1 in each AD)
-        - loadbalancers: 15 in region
+- console URL: [https://cloud.oracle.com/?tenant=vitkotacka&region=eu-frankfurt-1](https://cloud.oracle.com/?tenant=vitkotacka&region=eu-frankfurt-1)
 
 
-## Prereqisities
+## Prerequisites
 
-All commands expect Unix or Linux environment. They will probably not work on Windows.
+All commands expect Unix or Linux environment. They maybe won't work on Windows.
 
 This you should have installed (can be in docker, too):
 
 - curl
 - git
 - openssl
-- terraform, e.g.:
+- terraform (version `1.14.6+`, e.g.:
 
-    ```
-    wget https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
-    unzip terraform_0.12.24_linux_amd64.zip
-    mv terraform ~/bin
-    ```
-- go 1.11+ (for terratest)
+```shell
+wget https://releases.hashicorp.com/terraform/1.14.6/terraform_1.14.6_linux_amd64.zip
+unzip terraform_1.14.6_linux_amd64.zip
+mv terraform ~/bin
+```
+
+- go 1.26+ (for `terratest`)
 
 Optional (recommended - for OCI API key setup,...):
 

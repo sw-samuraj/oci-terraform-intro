@@ -1,7 +1,7 @@
 export TF_VAR_region="eu-frankfurt-1"
-export PS1='\u@\h \w [terraform web-server $TF_VAR_region]\$ '
+#export PS1='\u@\h \w [terraform web-server $TF_VAR_region]\$ '
+
 ### Authentication details
-# top admin:
 export TF_VAR_tenancy_ocid="ocid1.tenancy.oc1..aaaaaaaagpl3dtrsgsdrpjmtkffgtywh3gcesjyk4psebzssdlngpyg3luda"
 export TF_VAR_user_ocid="ocid1.user.oc1..aaaaaaaaranz2i2o7g5vzdfdmhc73l4shsmiezib3f7d7khdjzwjermylonq"
 export TF_VAR_fingerprint="a3:0c:69:fa:5e:ad:fd:20:b2:d3:ef:f2:e0:63:9f:60"

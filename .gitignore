@@ -2,6 +2,7 @@
 env-vars
 *.terraform.tfvars
 .terraform/
+.terraform.lock.hcl
 
 .idea
 *.swp
