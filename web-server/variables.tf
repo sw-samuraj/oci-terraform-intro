@@ -37,9 +37,8 @@ variable "InstanceImageOCID" {
   # and search for image with name Linux-7.6-2019, like written below (with different date).
   # TIP: the variable map can be (re-)defined also in env-vars file.
   default = {
-    // Oracle-Linux-7.6-2019.02.20-0
-    us-phoenix-1 = "ocid1.image.oc1.phx.aaaaaaaacss7qgb6vhojblgcklnmcbchhei6wgqisqmdciu3l4spmroipghq"
-    uk-london-1  = "ocid1.image.oc1.uk-london-1.aaaaaaaarruepdlahln5fah4lvm7tsf4was3wdx75vfs6vljdke65imbqnhq"
+    // Image: Oracle-Linux-9.7-2026.01.29-0
+    eu-frankfurt-1 = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa7rvdiuttebpjeag5mx2ql5rmkhjqh4psonmt7xtwqb6agtbcjuca"
   }
 }
 
